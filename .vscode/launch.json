@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SrunApplication<Srun>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "br.com.srun.SrunApplication",
+            "projectName": "Srun",
+            "args": ""
+        }
+    ]
+}

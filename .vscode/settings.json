@@ -1,0 +1,12 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+
+    "files.exclude" : {
+        ".mvn":true,
+        "target":true,
+        ".gitignore":true,
+        "HELP.md": true,
+        "mvnw": true,
+        "mvnw.cmd": true
+    }
+}
