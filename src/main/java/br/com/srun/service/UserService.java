@@ -1,5 +1,6 @@
 package br.com.srun.service;
 
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class UserService {
 	UserRepository daoUser;
 	
 	public User save(User user) {
+		String encodedPassword = Base64.getEncoder().encodeToString(user.getPassword().getBytes());
+
+		user.setPassword(encodedPassword);
+		
 		return daoUser.save(user);
 	}
 	

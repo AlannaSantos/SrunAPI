@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.srun.model.User;
+import br.com.srun.service.TokenService;
 import br.com.srun.service.UserService;
 
 @RestController
@@ -24,11 +25,20 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	TokenService tokenService;
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public User save(@RequestBody User user) {
-		return userService.save(user);
+		User save = userService.save(user);
+
+		String userToken = tokenService.getUserToken(user);
+
+		save.setToken(userToken);
+		save.setPassword(null);
+		return save;
 	}
 	
 	/*@PostMapping
