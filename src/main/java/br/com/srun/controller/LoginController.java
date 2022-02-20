@@ -25,16 +25,17 @@ public class LoginController {
     @PostMapping("/{email}/{password}")
     public User login(@PathVariable String email, @PathVariable String password){
         
-        User user = daoUser.findByEmail(email); 
+        User user = daoUser.findByEmail(email);
+        System.out.println(user); 
         String encodedPassword = Base64.getEncoder().encodeToString(password.getBytes());
 
         if(!encodedPassword.equals(user.getPassword())) return null;
         //Adicionar aqui posteriormente, verificação do status do usuário
         
         String userToken = tokenService.getUserToken(user);
-        user.setToken(userToken);
-        
+        user.setToken(userToken); 
         user.setPassword(null);
+
         return user;
     }
 }

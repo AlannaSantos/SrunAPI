@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.srun.model.User;
+import br.com.srun.model.enumeration.UserStatus;
 import br.com.srun.repository.UserRepository;
 
 @Service
@@ -21,6 +22,7 @@ public class UserService {
 		String encodedPassword = Base64.getEncoder().encodeToString(user.getPassword().getBytes());
 
 		user.setPassword(encodedPassword);
+		user.setStatus(UserStatus.ACTIVE);
 		
 		return daoUser.save(user);
 	}

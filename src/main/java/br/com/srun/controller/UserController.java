@@ -38,6 +38,7 @@ public class UserController {
 
 		save.setToken(userToken);
 		save.setPassword(null);
+		
 		return save;
 	}
 	
