@@ -13,13 +13,24 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import br.com.srun.model.enumeration.UserStatus;
-
+// import lombok.AccessLevel;
+// import lombok.AllArgsConstructor;
+// import lombok.Data;
+// import lombok.Getter;
+// import lombok.RequiredArgsConstructor;
+// import lombok.Setter;
 
 @Entity
 @Table(name = "tb_user")
+//@Getter
+//@Setter
+//@AllArgsConstructor
+//@RequiredArgsConstructor
+//@Data
 public class User {
 	
 	@Id
@@ -39,9 +50,13 @@ public class User {
 	@Column(unique = true)
 	private String email;
 	
+    //@Setter
 	@NotEmpty(message = "Senha do usuário não pode ser nula")
 	@Column(unique = true)
 	private String password;
+    
+    /*@JsonIgnore
+    public String getPassword() { return password; }*/
 
 	@Column(name = "birth_date")
 	private Date birthdate;
@@ -62,6 +77,9 @@ public class User {
 	@Transient
 	private String token;
 	
+	public User(){
+
+	}
 	//Getters and Setters
 	public Long getId() {
 		return id;
@@ -91,6 +109,7 @@ public class User {
 		this.email = email;
 	}
 	
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
